@@ -71,7 +71,7 @@ export function createGallery(images) {
 export function showLoader() {
   const loader = document.querySelector('.loader');
   if (loader) {
-    loader.style.display = 'block';
+    loader.style.display = 'inline-block';
   }
 }
 
