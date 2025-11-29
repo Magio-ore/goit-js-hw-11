@@ -71,15 +71,14 @@ export function createGallery(images) {
 export function showLoader() {
   const loader = document.querySelector('.loader');
   if (loader) {
-    loader.style.display = 'inline-block';
+    loader.classList.remove('is-hidden');
   }
 }
 
-// Приховати індикатор завантаження
 export function hideLoader() {
   const loader = document.querySelector('.loader');
   if (loader) {
-    loader.style.display = 'none';
+    loader.classList.add('is-hidden');
   }
 }
 

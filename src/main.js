@@ -18,6 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const query = searchInput.value.trim();
 
     if (!query) {
+      iziToast.warning({
+        title: 'Warning',
+        message: 'Please enter a search query to find images.',
+        position: 'topRight',
+      });
       return;
     }
 
@@ -27,10 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Виконання HTTP-запиту з використанням then() та catch()
     getImagesByQuery(query)
-      .then(data => {
+      .then(images => {
         hideLoader();
 
-        if (!data.hits || data.hits.length === 0) {
+        if (!images || images.length === 0) {
           iziToast.error({
             title: 'Error',
             message:
@@ -40,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
 
-        createGallery(data.hits);
+        createGallery(images);
       })
       .catch(error => {
         hideLoader();
